@@ -47,80 +47,187 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                                     try
                                     {
                                         var filaSecundaria = fila.Split('\r');
+
                                         var filaSinVacios = filaSecundaria[0];
 
                                         var DatosFila = filaSinVacios.Split(',');
 
-                                        var id = DatosFila[0];
 
-                                        var nombre = DatosFila[1];
-
+                                        var id = "";
+                                        var nombre = "";
                                         var descripcion = "";
                                         var casa = "";
                                         var precio = "";
                                         var existencia = "";
 
-                                        if (DatosFila.Length == 6)
+
+                                        var Aux = "";
+                                        var ContComillas = 0;
+                                        var Campo = 0;
+
+                                        for (int i = 0; i < DatosFila.Length; i++)
                                         {
-                                            descripcion = DatosFila[2];
-                                            casa = DatosFila[3];
-                                            precio = DatosFila[4];
-                                            existencia = DatosFila[5];
-                                        }
+                                            var Linea = DatosFila[i];
 
-                                        if (DatosFila.Length == 7)
-                                        {
-                                            var segundo = DatosFila[2];
-                                            var Tercero = DatosFila[3];
-                                            var cuarto = DatosFila[4];
-                                            var quinto = DatosFila[5];
-                                            var sexto = DatosFila[6];
-
-                                            if (segundo.Contains('"'))
+                                            if (Linea.Contains('"'))
                                             {
-                                                descripcion = segundo + Tercero;
-                                                Tercero = "";
-                                            }
-                                            else
-                                            {
-                                                descripcion = segundo;
-                                            }
-
-                                            if (Tercero != "")
-                                            {
-                                                if (Tercero.Contains('"'))
+                                                if (ContComillas == 0)
                                                 {
-                                                    casa = Tercero + cuarto;
-                                                    cuarto = "";
+                                                    Aux += Linea;
+                                                    ContComillas = 1;
                                                 }
+                                                else if (ContComillas == 1)
+                                                {
+                                                    Aux += ", " + Linea;
+                                                    ContComillas = 0;
+
+                                                    switch (Campo)
+                                                    {
+
+                                                        case 0:
+                                                            id = Aux;
+                                                            Aux = "";
+                                                            break;
+
+                                                        case 1:
+                                                            nombre = Aux;
+                                                            Aux = "";
+                                                            break;
+
+                                                        case 2:
+                                                            descripcion = Aux;
+                                                            Aux = "";
+                                                            break;
+
+                                                        case 3:
+                                                            casa = Aux;
+                                                            Aux = "";
+                                                            break;
+
+                                                        case 4:
+                                                            precio = Aux;
+                                                            Aux = "";
+                                                            break;
+
+                                                        case 5:
+                                                            existencia = Aux;
+                                                            Aux = "";
+                                                            break;
+                                                    }
                                             }
-                                            if (cuarto != "")
-                                            {
-                                                casa = cuarto;
-                                                precio = quinto;
-                                                existencia = sexto;
-                                            }
+                                        }
                                             else
                                             {
-                                                precio = quinto;
-                                                existencia = sexto;
+                                                if (ContComillas !=0)
+                                                {
+                                                    Aux += ", "+ Linea;
+                                                }
+                                                else
+                                                {
+                                                switch (Campo)
+                                                {
+
+                                                    case 0:
+                                                        id = Linea;
+                                                        break;
+
+                                                    case 1:
+                                                        nombre = Linea;
+                                                        break;
+
+                                                    case 2:
+                                                        descripcion = Linea;
+                                                        break;
+
+                                                    case 3:
+                                                        casa = Linea;
+                                                        break;
+
+                                                    case 4:
+                                                        precio = Linea;
+                                                        break;
+
+                                                    case 5:
+                                                        existencia = Linea;
+                                                        break;
+                                                }
+
+                                                if (Aux == "")
+                                                {
+
+                                                    Campo++;
+
+                                                }
+                                                Linea = "";
+                                            }
+                                                
                                             }
                                         }
 
-                                        if (DatosFila.Length == 8)
-                                        {
-                                            var segundo = DatosFila[2];
-                                            var Tercero = DatosFila[3];
-                                            var cuarto = DatosFila[4];
-                                            var quinto = DatosFila[5];
-                                            var sexto = DatosFila[6];
-                                            var septimo = DatosFila[7];
 
-                                            descripcion = segundo + Tercero;
-                                            casa = cuarto + quinto;
-                                            precio = sexto;
-                                            existencia = septimo;
-                                        }
+                                        
+
+                                        //if (DatosFila.Length == 6)
+                                        //{
+                                        //    descripcion = DatosFila[2];
+                                        //    casa = DatosFila[3];
+                                        //    precio = DatosFila[4];
+                                        //    existencia = DatosFila[5];
+                                        //}
+
+                                        //if (DatosFila.Length == 7)
+                                        //{
+                                        //    var segundo = DatosFila[2];
+                                        //    var Tercero = DatosFila[3];
+                                        //    var cuarto = DatosFila[4];
+                                        //    var quinto = DatosFila[5];
+                                        //    var sexto = DatosFila[6];
+
+                                        //    if (segundo.Contains('"'))
+                                        //    {
+                                        //        descripcion = segundo + Tercero;
+                                        //        Tercero = "";
+                                        //    }
+                                        //    else
+                                        //    {
+                                        //        descripcion = segundo;
+                                        //    }
+
+                                        //    if (Tercero != "")
+                                        //    {
+                                        //        if (Tercero.Contains('"'))
+                                        //        {
+                                        //            casa = Tercero + cuarto;
+                                        //            cuarto = "";
+                                        //        }
+                                        //    }
+                                        //    if (cuarto != "")
+                                        //    {
+                                        //        casa = cuarto;
+                                        //        precio = quinto;
+                                        //        existencia = sexto;
+                                        //    }
+                                        //    else
+                                        //    {
+                                        //        precio = quinto;
+                                        //        existencia = sexto;
+                                        //    }
+                                        //}
+
+                                        //if (DatosFila.Length == 8)
+                                        //{
+                                        //    var segundo = DatosFila[2];
+                                        //    var Tercero = DatosFila[3];
+                                        //    var cuarto = DatosFila[4];
+                                        //    var quinto = DatosFila[5];
+                                        //    var sexto = DatosFila[6];
+                                        //    var septimo = DatosFila[7];
+
+                                        //    descripcion = segundo + Tercero;
+                                        //    casa = cuarto + quinto;
+                                        //    precio = sexto;
+                                        //    existencia = septimo;
+                                        //}
 
                                         //var Farmaco = new Medicina(id, nombre, descripcion, casa, precio, existencia);
                                         //Data.Instance.ListaMedicinas.Add(Farmaco);

@@ -6,7 +6,7 @@
 
 <h2>Carga de inventario por medio de archivo *.csv</h2>
 
-@using (Html.BeginForm("CargaArchivo", "Operador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Lector", "ManejoArchivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <label for="exampleInputFile">Entrada de archivo</label>
     <input type="file" class="form-control-file" name="postedFile" aria-describedby="fileHelp">
