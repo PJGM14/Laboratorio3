@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Carga de Archivo *.CSV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Carga de inventario por medio de archivo *.csv</h2>
+
+@using (Html.BeginForm("CargaArchivo", "Operador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="exampleInputFile">Entrada de archivo</label>
+    <input type="file" class="form-control-file" name="postedFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Tipo de archivo *.csv, debe de contener ID, Nombre, Descripción, Casa Médica, Precio "$00.00" y Existencias.</small>
+
+    <button type="submit" class="btn btn-primary">Cargar</button>
+}

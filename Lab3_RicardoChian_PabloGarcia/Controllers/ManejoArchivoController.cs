@@ -149,7 +149,7 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                 {
                     System.IO.File.Delete(FilePath);
                     Directory.Delete(path);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Lector", "ManejoArchivo");
                 }
                 return RedirectToAction("Index", "Home");
         }
