@@ -51,6 +51,7 @@
     <Compile Include="NoLinearStructures\Node\Nodo.cs" />
     <Compile Include="NoLinearStructures\Node\NodoB.cs" />
     <Compile Include="NoLinearStructures\Operaciones\OperacionesTexto.cs" />
+    <Compile Include="NoLinearStructures\Trees\ArbolB.cs" />
     <Compile Include="NoLinearStructures\Trees\ArbolBinario.cs" />
     <Compile Include="NoLinearStructures\Trees\ArbolBusqueda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
