@@ -334,7 +334,7 @@ namespace Estructuras.NoLinearStructures.Trees
             {
                 return;
             }
-            NodoB<T> nodoActual = NodoB<T>.LeerNodoDesdeDisco(_archivo, _tamañoEncabezadoBinario, Orden, posicionActual, _fabrica);
+            var nodoActual = NodoB<T>.LeerNodoDesdeDisco(_archivo, _tamañoEncabezadoBinario, Orden, posicionActual, _fabrica);
             for (int i = 0; i < nodoActual.Hijos.Count; i++)
             {
                 RecorrerPreOrdenRecursivo(nodoActual.Hijos[i], texto);
@@ -350,11 +350,6 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             throw new NotImplementedException();
         }
-
-        //public override Bitmap Dibujar()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public override void Cerrar()
         {
