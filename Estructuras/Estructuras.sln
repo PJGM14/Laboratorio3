@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_RicardoChian_PabloGarcia", "Lab3_RicardoChian_PabloGarcia\Lab3_RicardoChian_PabloGarcia.csproj", "{823BD5C7-80CD-49C7-A1A5-87C6C34FD375}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estructuras", "Estructuras\Estructuras\Estructuras.csproj", "{E28E4F0C-9166-41FC-911B-0D8AE91EDC40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estructuras", "Estructuras\Estructuras.csproj", "{E28E4F0C-9166-41FC-911B-0D8AE91EDC40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{823BD5C7-80CD-49C7-A1A5-87C6C34FD375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{823BD5C7-80CD-49C7-A1A5-87C6C34FD375}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{823BD5C7-80CD-49C7-A1A5-87C6C34FD375}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{823BD5C7-80CD-49C7-A1A5-87C6C34FD375}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E28E4F0C-9166-41FC-911B-0D8AE91EDC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E28E4F0C-9166-41FC-911B-0D8AE91EDC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E28E4F0C-9166-41FC-911B-0D8AE91EDC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B229EEE8-F380-4228-A0FB-BE2804E31E9D}
+		SolutionGuid = {E5067493-B6FD-4787-A0FB-8A66B41886CC}
 	EndGlobalSection
 EndGlobal
