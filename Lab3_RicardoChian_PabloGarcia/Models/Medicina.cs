@@ -90,12 +90,5 @@ namespace Lab3_RicardoChian_PabloGarcia.Models
 
             return strgBuilder.ToString();
         }
-
-        public Medicina Fabricar(string textoTamañoFijo)
-        {
-            var datos = textoTamañoFijo.Split('-');
-            var medicamento = new Medicina(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5]);
-            return medicamento;
-        }
     }
 }
