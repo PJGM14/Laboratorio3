@@ -29,8 +29,8 @@ namespace Estructuras.NoLinearStructures.Trees
         public int Orden { get; private set; }
         public int Altura { get; private set; }
 
-        public List<string> datos = new List<string>(); 
-        
+        public List<string> datos = new List<string>();
+
 
         public ArbolB(int orden, string nombreArchivo, IFabricaTamañoTextoFijo<T> fabrica)
         {
@@ -215,9 +215,9 @@ namespace Estructuras.NoLinearStructures.Trees
                 AgregarRecursivo(_raiz, llave, dato);
                 Tamaño++;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-               
+                var error = e.Message;
             }
         }
 
@@ -283,8 +283,8 @@ namespace Estructuras.NoLinearStructures.Trees
 
             EscribirNodo(nodoActual, texto);
             for (int i = 0; i < nodoActual.Hijos.Count; i++)
-            {             
-                RecorrerPreOrdenRecursivo(nodoActual.Hijos[i], texto);                
+            {
+                RecorrerPreOrdenRecursivo(nodoActual.Hijos[i], texto);
             }
 
             for (int i = 0; i < nodoActual.CantidadDatos; i++)
@@ -355,7 +355,7 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             _archivo.Close();
         }
-        
+
         public T Search(Delegate comparer, string llave)
         {
             return (T)comparer.DynamicInvoke(this, llave);
