@@ -20,110 +20,110 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
         {
 
             var FilePath = string.Empty;
-                var path = Server.MapPath("~/CargaCSV/");
+            var path = Server.MapPath("~/CargaCSV/");
 
-                try
+            try
+            {
+                if (postedFile != null)
                 {
-                    if (postedFile != null)
+                    if (!Directory.Exists(path))
                     {
-                        if (!Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+                    }
+                    FilePath = path + Path.GetFileName(postedFile.FileName);
+
+                    postedFile.SaveAs(FilePath);
+
+                    var CsvData = System.IO.File.ReadAllText(FilePath);
+
+                    var cont = 0;
+
+                    foreach (var fila in CsvData.Split('\n'))
+                    {
+                        if (!string.IsNullOrEmpty(fila))
                         {
-                            Directory.CreateDirectory(path);
-                        }
-                        FilePath = path + Path.GetFileName(postedFile.FileName);
-
-                        postedFile.SaveAs(FilePath);
-
-                        var CsvData = System.IO.File.ReadAllText(FilePath);
-
-                        var cont = 0;
-
-                        foreach (var fila in CsvData.Split('\n'))
-                        {
-                            if (!string.IsNullOrEmpty(fila))
+                            if (cont != 0)
                             {
-                                if (cont != 0)
+                                try
                                 {
-                                    try
+                                    var filaSecundaria = fila.Split('\r');
+
+                                    var filaSinVacios = filaSecundaria[0];
+
+                                    var DatosFila = filaSinVacios.Split(',');
+
+
+                                    var id = "";
+                                    var nombre = "";
+                                    var descripcion = "";
+                                    var casa = "";
+                                    var precio = "";
+                                    var existencia = "";
+
+
+                                    var Aux = "";
+                                    var ContComillas = 0;
+                                    var Campo = 0;
+
+                                    for (int i = 0; i < DatosFila.Length; i++)
                                     {
-                                        var filaSecundaria = fila.Split('\r');
+                                        var Linea = DatosFila[i];
 
-                                        var filaSinVacios = filaSecundaria[0];
-
-                                        var DatosFila = filaSinVacios.Split(',');
-
-
-                                        var id = "";
-                                        var nombre = "";
-                                        var descripcion = "";
-                                        var casa = "";
-                                        var precio = "";
-                                        var existencia = "";
-
-
-                                        var Aux = "";
-                                        var ContComillas = 0;
-                                        var Campo = 0;
-
-                                        for (int i = 0; i < DatosFila.Length; i++)
+                                        if (Linea.Contains('"'))
                                         {
-                                            var Linea = DatosFila[i];
-
-                                            if (Linea.Contains('"'))
+                                            if (ContComillas == 0)
                                             {
-                                                if (ContComillas == 0)
+                                                Aux += Linea;
+                                                ContComillas = 1;
+                                            }
+                                            else if (ContComillas == 1)
+                                            {
+                                                Aux += ", " + Linea;
+                                                ContComillas = 0;
+
+                                                switch (Campo)
                                                 {
-                                                    Aux += Linea;
-                                                    ContComillas = 1;
+
+                                                    case 0:
+                                                        id = Aux;
+                                                        Aux = "";
+                                                        break;
+
+                                                    case 1:
+                                                        nombre = Aux;
+                                                        Aux = "";
+                                                        break;
+
+                                                    case 2:
+                                                        descripcion = Aux;
+                                                        Aux = "";
+                                                        break;
+
+                                                    case 3:
+                                                        casa = Aux;
+                                                        Aux = "";
+                                                        break;
+
+                                                    case 4:
+                                                        precio = Aux;
+                                                        Aux = "";
+                                                        break;
+
+                                                    case 5:
+                                                        existencia = Aux;
+                                                        Aux = "";
+                                                        break;
                                                 }
-                                                else if (ContComillas == 1)
-                                                {
-                                                    Aux += ", " + Linea;
-                                                    ContComillas = 0;
-
-                                                    switch (Campo)
-                                                    {
-
-                                                        case 0:
-                                                            id = Aux;
-                                                            Aux = "";
-                                                            break;
-
-                                                        case 1:
-                                                            nombre = Aux;
-                                                            Aux = "";
-                                                            break;
-
-                                                        case 2:
-                                                            descripcion = Aux;
-                                                            Aux = "";
-                                                            break;
-
-                                                        case 3:
-                                                            casa = Aux;
-                                                            Aux = "";
-                                                            break;
-
-                                                        case 4:
-                                                            precio = Aux;
-                                                            Aux = "";
-                                                            break;
-
-                                                        case 5:
-                                                            existencia = Aux;
-                                                            Aux = "";
-                                                            break;
-                                                    }
                                             }
                                         }
+                                        else
+                                        {
+                                            if (ContComillas != 0)
+                                            {
+                                                Aux += ", " + Linea;
+                                            }
                                             else
                                             {
-                                                if (ContComillas !=0)
-                                                {
-                                                    Aux += ", "+ Linea;
-                                                }
-                                                else
-                                                {
                                                 switch (Campo)
                                                 {
 
@@ -160,105 +160,30 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                                                 }
                                                 Linea = "";
                                             }
-                                                
-                                            }
+
                                         }
-
-
-                                        
-
-                                        //if (DatosFila.Length == 6)
-                                        //{
-                                        //    descripcion = DatosFila[2];
-                                        //    casa = DatosFila[3];
-                                        //    precio = DatosFila[4];
-                                        //    existencia = DatosFila[5];
-                                        //}
-
-                                        //if (DatosFila.Length == 7)
-                                        //{
-                                        //    var segundo = DatosFila[2];
-                                        //    var Tercero = DatosFila[3];
-                                        //    var cuarto = DatosFila[4];
-                                        //    var quinto = DatosFila[5];
-                                        //    var sexto = DatosFila[6];
-
-                                        //    if (segundo.Contains('"'))
-                                        //    {
-                                        //        descripcion = segundo + Tercero;
-                                        //        Tercero = "";
-                                        //    }
-                                        //    else
-                                        //    {
-                                        //        descripcion = segundo;
-                                        //    }
-
-                                        //    if (Tercero != "")
-                                        //    {
-                                        //        if (Tercero.Contains('"'))
-                                        //        {
-                                        //            casa = Tercero + cuarto;
-                                        //            cuarto = "";
-                                        //        }
-                                        //    }
-                                        //    if (cuarto != "")
-                                        //    {
-                                        //        casa = cuarto;
-                                        //        precio = quinto;
-                                        //        existencia = sexto;
-                                        //    }
-                                        //    else
-                                        //    {
-                                        //        precio = quinto;
-                                        //        existencia = sexto;
-                                        //    }
-                                        //}
-
-                                        //if (DatosFila.Length == 8)
-                                        //{
-                                        //    var segundo = DatosFila[2];
-                                        //    var Tercero = DatosFila[3];
-                                        //    var cuarto = DatosFila[4];
-                                        //    var quinto = DatosFila[5];
-                                        //    var sexto = DatosFila[6];
-                                        //    var septimo = DatosFila[7];
-
-                                        //    descripcion = segundo + Tercero;
-                                        //    casa = cuarto + quinto;
-                                        //    precio = sexto;
-                                        //    existencia = septimo;
-                                        //}
-
-                                        //var Farmaco = new Medicina(id, nombre, descripcion, casa, precio, existencia);
-                                        //Data.Instance.ListaMedicinas.Add(Farmaco);
-                                    }
-                                    catch (Exception e)
-                                    {
-                                    
                                     }
                                 }
-                                cont++;
+                                catch (Exception e)
+                                {
+                                    
+                                }
                             }
+                            cont++;
                         }
-                        System.IO.File.Delete(FilePath);
-                        Directory.Delete(path);
                     }
-
-                    //foreach (var item in Data.Instance.ListaMedicinas)
-                    //{
-                    //    var indice = new Indice(item.Id,item.Nombre);
-                    //    Data.Instance.ArbolIndice.Insertar(ref Data.Instance.ArbolIndice.Raiz,indice,Indice.OrdenarPorNombre,null);
-                    //}
-
-                    FilePath = "";
-                }
-                catch (Exception Error)
-                {
                     System.IO.File.Delete(FilePath);
                     Directory.Delete(path);
-                    return RedirectToAction("Lector", "ManejoArchivo");
                 }
-                return RedirectToAction("Index", "Home");
+                FilePath = "";
+            }
+            catch (Exception Error)
+            {
+                System.IO.File.Delete(FilePath);
+                Directory.Delete(path);
+                return RedirectToAction("Lector", "ManejoArchivo");
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Estructuras.NoLinearStructures.Trees
 {
     public class ArbolB<T> : ArbolBusqueda<string, T> where T : ITextoTamañoFijo
     {
-        //TAMANIO TOTAL DEL ENCABEZADO
+        //TAMAÑO TOTAL DEL ENCABEZADO
         private const int _tamañoEncabezadoBinario = 5 * OperacionesTexto.EnteroYEnterBinarioTamaño;
 
         //ATRIBUTOS EN EL ENCABEZADO DEL ARCHIVO
