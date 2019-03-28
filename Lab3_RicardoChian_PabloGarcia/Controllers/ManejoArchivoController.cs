@@ -118,7 +118,7 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                                                     case 5:
                                                         existencia = Aux;
                                                         var med = new Medicina(id, nombre, descripcion, casa, precio, existencia);
-                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med, "");
+                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med);
                                                         Aux = "";
                                                         break;
                                                 }
@@ -163,7 +163,7 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                                                     case 5:
                                                         existencia = Linea;
                                                         var med = new Medicina(id, nombre, descripcion, casa, precio, existencia);
-                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med, "");
+                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med);
                                                         break;
                                                 }
 

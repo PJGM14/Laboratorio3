@@ -10,7 +10,7 @@ namespace Estructuras.NoLinearStructures.Trees
     {
         public int Tamaño { get; protected set; }
 
-        public abstract void Agregar(TLlave llave, T dato, string llaveAux);
+        public abstract void Agregar(TLlave llave, T dato);
 
         public abstract void Eliminar(TLlave llave);
 

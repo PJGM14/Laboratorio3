@@ -203,7 +203,7 @@ namespace Estructuras.NoLinearStructures.Trees
             }
         }
 
-        public override void Agregar(string llave, T dato, string llaveAux)
+        public override void Agregar(string llave, T dato)
         {
             try
             {
@@ -212,7 +212,6 @@ namespace Estructuras.NoLinearStructures.Trees
                     throw new ArgumentOutOfRangeException("llave");
                 }
 
-                llave = llave + llaveAux;
                 AgregarRecursivo(_raiz, llave, dato);
                 Tamaño++;
             }
