@@ -25,7 +25,7 @@ namespace Estructuras.NoLinearStructures.Node
             get
             {
                 int i = 0;
-                while (i < Llaves.Count && Llaves[i] != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                while (i < Llaves.Count && Llaves[i] != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
                 {
                     i++;
                 }
@@ -161,7 +161,7 @@ namespace Estructuras.NoLinearStructures.Node
 
             for (int i = 0; i < Orden - 1; i++)
             {
-                Llaves.Add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                Llaves.Add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             }
 
             Datos = new List<T>();
@@ -276,7 +276,7 @@ namespace Estructuras.NoLinearStructures.Node
             {
                 int llaveArbol = GetNumericString(Llaves[i]);
 
-                if (llaveArbol > llaveBuscar || (Llaves[i] == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"))
+                if (llaveArbol > llaveBuscar || (Llaves[i] == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"))
                 {
                     posicion = i;
                     break;
@@ -327,7 +327,7 @@ namespace Estructuras.NoLinearStructures.Node
             {
                 throw new IndexOutOfRangeException("El nodo está lleno, ya no puede insertar más datos");
             }
-            if (llave == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            if (llave == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
             {
                 throw new ArgumentOutOfRangeException("llave");
             }
@@ -394,7 +394,7 @@ namespace Estructuras.NoLinearStructures.Node
                 throw new Exception("Uno nodo solo puede separarse si está lleno");
             }
             // Incrementar el tamaño de las listas en una posición 
-            Llaves.Add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            Llaves.Add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             Datos.Add(dato);
             Hijos.Add(OperacionesTexto.ApuntadorVacio);
 
@@ -405,7 +405,7 @@ namespace Estructuras.NoLinearStructures.Node
             int mitad = (Orden / 2);
             llavePorSubir = OperacionesTexto.FormatearLlave(Llaves[mitad]);
             datoPorSubir = Datos[mitad];
-            Llaves[mitad] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+            Llaves[mitad] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
             // Llenar las llaves y datos que pasan al nuevo nodo 
             int j = 0;
@@ -413,7 +413,7 @@ namespace Estructuras.NoLinearStructures.Node
             {
                 nuevoNodo.Llaves[j] = Llaves[i];
                 nuevoNodo.Datos[j] = Datos[i];
-                Llaves[i] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+                Llaves[i] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
                 j++;
             }
 

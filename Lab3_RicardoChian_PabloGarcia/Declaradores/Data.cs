@@ -29,7 +29,7 @@ namespace Lab3_RicardoChian_PabloGarcia.Declaradores
 
         public void Instanciar(string path)
         {
-            MedicinasTree = new ArbolB<Medicina>(5,path,new FabricaMedicina());
+            MedicinasTree = new ArbolB<Medicina>(4,path,new FabricaMedicina());
         }
     }
 }

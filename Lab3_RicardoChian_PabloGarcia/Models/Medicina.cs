@@ -30,8 +30,18 @@ namespace Lab3_RicardoChian_PabloGarcia.Models
         public int Existencia { get; set; }
 
         //ID-NOMBRE-DESCRIPCION-CASA-PRECIO-EXISTENCIAS
-        //10-  40  -     60    - 40 -  10  -      10    = 175
-        private const string FormatoConst = "0000000000-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-0000000000-0000000000";
+        //10-  60  -     80    - 40 -  10  -      10    = 215
+        private const string FormatoConst = "0000000000-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-0000000000-0000000000";
+
+        public Medicina()
+        {
+            Id = 0;
+            Nombre = "";
+            Descripcion = "";
+            Casa = "";
+            Precio = 0.00;
+            Existencia = 0;
+        }
 
         public Medicina(string id, string nombre, string descripcion, string casa, string precio, string existencia)
         {
@@ -62,7 +72,7 @@ namespace Lab3_RicardoChian_PabloGarcia.Models
         {
             get
             {
-                return 175;
+                return 215;
             }
 
         }
@@ -78,9 +88,9 @@ namespace Lab3_RicardoChian_PabloGarcia.Models
 
             strgBuilder.Append(Id.ToString().PadLeft(10, '0'));
             strgBuilder.Append('-');
-            strgBuilder.Append(Nombre.PadLeft(40, 'x'));
+            strgBuilder.Append(Nombre.PadLeft(60, 'x'));
             strgBuilder.Append('-');
-            strgBuilder.Append(Descripcion.PadLeft(60, 'x'));
+            strgBuilder.Append(Descripcion.PadLeft(80, 'x'));
             strgBuilder.Append('-');
             strgBuilder.Append(Casa.PadLeft(40, 'x'));
             strgBuilder.Append('-');

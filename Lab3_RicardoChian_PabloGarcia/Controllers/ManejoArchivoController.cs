@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using Lab3_RicardoChian_PabloGarcia.Declaradores;
+using Lab3_RicardoChian_PabloGarcia.Models;
 
 namespace Lab3_RicardoChian_PabloGarcia.Controllers
 {
@@ -21,6 +24,9 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
 
             var FilePath = string.Empty;
             var path = Server.MapPath("~/CargaCSV/");
+            var pathArbol = CrearDirectorioArboles(Server.MapPath("~/Trees/"));
+
+            Data.Instance.Instanciar(pathArbol);
 
             try
             {
@@ -111,8 +117,15 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
 
                                                     case 5:
                                                         existencia = Aux;
+                                                        var med = new Medicina(id, nombre, descripcion, casa, precio, existencia);
+                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med, "");
                                                         Aux = "";
                                                         break;
+                                                }
+
+                                                if (ContComillas == 0)
+                                                {
+                                                    Campo++;
                                                 }
                                             }
                                         }
@@ -149,6 +162,8 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
 
                                                     case 5:
                                                         existencia = Linea;
+                                                        var med = new Medicina(id, nombre, descripcion, casa, precio, existencia);
+                                                        Data.Instance.MedicinasTree.Agregar(med.Nombre, med, "");
                                                         break;
                                                 }
 
@@ -160,7 +175,6 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                                                 }
                                                 Linea = "";
                                             }
-
                                         }
                                     }
                                 }
@@ -184,6 +198,18 @@ namespace Lab3_RicardoChian_PabloGarcia.Controllers
                 return RedirectToAction("Lector", "ManejoArchivo");
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        //MÉTODO QUE SIRVE PARA CREAR EL DIRECTORIO DENTRO DE LA CARPETA DEL PROYECTO QUE SE LLAMA "MedicinesTree"
+        //ADENTRO DE ESTA CARPETA SE GUARDARÁ EL ARBOL B DE MEDICINAS
+        private string CrearDirectorioArboles(string server)
+        {
+            if (!Directory.Exists(server))
+            {
+                Directory.CreateDirectory(server);
+            }
+
+            return server + @"MedicinesTree.txt";
         }
     }
 }

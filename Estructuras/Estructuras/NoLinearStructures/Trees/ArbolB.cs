@@ -125,7 +125,7 @@ namespace Estructuras.NoLinearStructures.Trees
             _ultimaPosicionLibre++;
 
             //DATOS A SUBIR AL PADRE LUEGO DE LA SEPARACIÓN
-            string llavePorSubir = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+            string llavePorSubir = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
             T datoPorSubir = _fabrica.FabricarNulo();
 
             //SE LLAMA AL METODO QUE HACE LA SEPARACION 
@@ -207,7 +207,7 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             try
             {
-                if (llave == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                if (llave == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
                 {
                     throw new ArgumentOutOfRangeException("llave");
                 }
@@ -254,7 +254,7 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             for (int i = 0; i < nodoActual.Llaves.Count; i++)
             {
-                if (nodoActual.Llaves[i] != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                if (nodoActual.Llaves[i] != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
                 {
                     texto.AppendLine(nodoActual.Llaves[i].ToString());
                     texto.AppendLine(nodoActual.Datos[i].ToString());
@@ -346,6 +346,7 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             return Altura;
         }
+
         public override void Eliminar(string llave)
         {
             throw new NotImplementedException();
@@ -355,8 +356,7 @@ namespace Estructuras.NoLinearStructures.Trees
         {
             _archivo.Close();
         }
-
-
+        
         public T Search(Delegate comparer, string llave)
         {
             return (T)comparer.DynamicInvoke(this, llave);

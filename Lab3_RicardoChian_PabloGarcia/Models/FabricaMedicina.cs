@@ -11,13 +11,13 @@ namespace Lab3_RicardoChian_PabloGarcia.Models
         public Medicina Fabricar(string textoTamañoFijo)
         {
             var datos = textoTamañoFijo.Split('-');
-            var medicamento = new Medicina(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]);
+            var medicamento = new Medicina(datos[0].Trim(), datos[1].Trim(), datos[2].Trim(), datos[3].Trim(), datos[4].Trim(), datos[5].Trim());
             return medicamento;
         }
 
         public Medicina FabricarNulo()
         {
-            throw new NotImplementedException();
+            return new Medicina();
         }
     }
 }
